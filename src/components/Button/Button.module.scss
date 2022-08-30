@@ -1,0 +1,117 @@
+@import '../../styles/variables.scss';
+
+$buttons: (
+  'Primary': (
+    $btn-bg-color-primary: $btn-bg-color-primary-hover,
+  ),
+  'Secondary': (
+    $btn-bg-color-secondary: $btn-bg-color-secondary-hover,
+  ),
+  'Info': (
+    $btn-bg-color-info: $btn-bg-color-info-hover,
+  ),
+  'Link': (
+    $btn-bg-color-link: $btn-bg-color-link-hover,
+  ),
+  'Success': (
+    $btn-bg-color-success: $btn-bg-color-success-hover,
+  ),
+  'Warning': (
+    $btn-bg-color-warning: $btn-bg-color-warning-hover,
+  ),
+  'Danger': (
+    $btn-bg-color-danger: $btn-bg-color-danger-hover,
+  ),
+  'White': (
+    $btn-bg-color-white: $btn-bg-color-white-hover,
+  ),
+  'Dark': (
+    $btn-bg-color-dark: $btn-bg-color-dark-hover,
+  ),
+);
+$sizes: (
+  'small': (
+    $btn-font-size-small: $btn-padding-size-small,
+  ),
+  'medium': (
+    $btn-font-size-medium: $btn-padding-size-medium,
+  ),
+  'default': (
+    $btn-font-size-default: $btn-padding-size-default,
+  ),
+  'large': (
+    $btn-font-size-large: $btn-padding-size-large,
+  ),
+);
+
+.Button {
+  border: none;
+  padding: $btn-padding-size-default;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $btn-font-size-default;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 5px;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+}
+
+@each $name, $value in $buttons {
+  .is#{$name} {
+    @each $bg_color, $bg_hover_color in $value {
+      background-color: $bg_color;
+      &:hover {
+        background-color: $bg_hover_color;
+      }
+    }
+
+    @if $name == 'Secondary' {
+      color: $btn-font-color-dark;
+    } @else if $name == 'White' {
+      box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+    } @else {
+      color: $btn-font-color-white;
+    }
+
+    &.isLight {
+      @if $name == 'Primary' {
+        background-color: $btn-bg-color-primary-light;
+        color: $btn-bg-color-primary;
+      } @else if $name == 'Secondary' {
+        background-color: $btn-bg-color-secondary;
+      } @else if $name == 'Info' {
+        background-color: $btn-bg-color-info-light;
+        color: $btn-bg-color-info;
+      } @else if $name == 'Link' {
+        background-color: $btn-bg-color-link-light;
+        color: $btn-bg-color-link;
+      } @else if $name == 'Success' {
+        background-color: $btn-bg-color-success-light;
+        color: $btn-bg-color-success;
+      } @else if $name == 'Warning' {
+        background-color: $btn-bg-color-warning-light;
+        color: $btn-bg-color-warning;
+      } @else if $name == 'Danger' {
+        background-color: $btn-bg-color-danger-light;
+        color: $btn-bg-color-danger;
+      } @else if $name == 'White' {
+        background-color: $btn-bg-color-white;
+      } @else if $name == 'Dark' {
+        background-color: $btn-bg-color-dark-light;
+        color: $btn-bg-color-dark;
+      }
+    }
+  }
+}
+
+@each $name, $value in $sizes {
+  .is#{$name} {
+    @each $font_size, $padding in $value {
+      font-size: $font_size;
+      padding: $padding;
+    }
+  }
+}
